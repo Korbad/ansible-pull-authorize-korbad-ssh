@@ -6,8 +6,7 @@
     github_username: korbad
   tasks:
   - name: Ensure authorized_keys for GitHub user {{ github_username }} is present for local user {{ ansible_user }}
-    authorized_key:
+    ansible.posix.authorized_key:
       user: "{{ ansible_user }}"
       key: "https://github.com/{{ github_username }}.keys"
       manage_dir: true
-    become: true
